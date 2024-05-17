@@ -1,0 +1,19 @@
+{
+  "name": "typescript-template",
+  "version": "1.0.0",
+  "description": "A simple TypeScript template for starting new Typescript projects with",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/W-E-Robinson/TypeScript-Template.git"
+  },
+  "author": "W Robnison",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/W-E-Robinson/TypeScript-Template/issues"
+  },
+  "homepage": "https://github.com/W-E-Robinson/TypeScript-Template#readme"
+}
