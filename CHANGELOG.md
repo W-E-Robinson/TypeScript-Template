@@ -14,3 +14,4 @@ This Changelog is formatted according to [Keep a Changelog](https://keepachangel
 - CHANGELOG.
 - src directory.
 - Testing set up.
+- Dockerfile.
