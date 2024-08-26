@@ -16,6 +16,7 @@ module.exports = {
     },
     rules: {
         '@typescript-eslint/comma-dangle': [2, 'always-multiline'],
+        '@typescript-eslint/no-use-before-define': [2, { 'functions': false }],
         'import/extensions': [0, 'always'],
         'no-restricted-syntax': [0, { selector: 'ForOfStatement' }],
         'no-await-in-loop': [0],
