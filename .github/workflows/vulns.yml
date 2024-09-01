@@ -6,35 +6,19 @@ on:
   schedule:
     - cron: "0 12 * * 6"
 
-permissions:
-  contents: read
-
 jobs:
-  build:
-    permissions:
-      contents: read
-      security-events: write
-      actions: read
-    name: Build
+  fs-scan:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - 
+        name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Build an image from Dockerfile
-        run: |
-          docker build --pull --no-cache -t ts-template:${{ github.sha }} .
-
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@0.24.0
+      -
+        name: Run Trivy vulnerability scanner in fs mode
+        uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'ts-template:${{ github.sha }}'
-          scanners: misconfig,vuln,secret
-          format: 'sarif'
-          output: 'trivy-results.sarif'
-          severity: 'LOW,MEDIUM,CRITICAL,HIGH'
-
-      - name: Upload Trivy scan results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: 'trivy-results.sarif'
+          scan-type: 'fs'
+          scan-ref: '.'
+          trivy-config: trivy.yaml
+          name: Set up QEMU
+          uses: docker/setup-qemu-action@v2
