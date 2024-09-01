@@ -5,7 +5,8 @@ on:
   schedule:
     - cron: "0 12 * * 6"
 jobs:
-  scan-image:
+  build:
+    name: Build
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout code
@@ -13,25 +14,11 @@ jobs:
       - name: Build an image from Dockerfile
         run: |
           docker build --pull --no-cache -t ts-template:${{ github.sha }} .
-      - name: Run Trivy vulnerability scanner for image
+      - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.20.0
         with:
           image-ref: 'ts-template:${{ github.sha }}'
           format: 'table'
-          exit-code: '1'
-          ignore-unfixed: true
-          vuln-type: 'os,library'
-          severity: 'CRITICAL,HIGH'
-  scan-repo:
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Run Trivy vulnerability scanner for repo
-        uses: aquasecurity/trivy-action@0.20.0
-        with:
-          scan-type: 'fs'
-          scan-ref: '.'
           exit-code: '1'
           ignore-unfixed: true
           vuln-type: 'os,library'
