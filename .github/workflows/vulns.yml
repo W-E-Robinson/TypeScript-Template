@@ -29,6 +29,7 @@ jobs:
         uses: aquasecurity/trivy-action@0.24.0
         with:
           image-ref: 'ts-template:${{ github.sha }}'
+          scanners: misconfig,vuln,secret
           format: 'sarif'
           output: 'trivy-results.sarif'
           severity: 'LOW,MEDIUM,CRITICAL,HIGH'
