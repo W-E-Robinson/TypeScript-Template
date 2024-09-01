@@ -10,15 +10,13 @@ jobs:
   fs-scan:
     runs-on: ubuntu-latest
     steps:
-      - 
-        name: Checkout code
+      - name: Checkout code
         uses: actions/checkout@v4
-      -
-        name: Run Trivy vulnerability scanner in fs mode
+      - name: Run Trivy vulnerability scanner in fs mode
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: 'fs'
           scan-ref: '.'
-          trivy-config: trivy.yaml
-          name: Set up QEMU
-          uses: docker/setup-qemu-action@v2
+          format: json
+          exit-code: 1
+          severity: MEDIUM,CRITICAL
