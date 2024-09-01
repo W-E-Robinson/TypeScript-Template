@@ -26,11 +26,10 @@ jobs:
           docker build --pull --no-cache -t ts-template:${{ github.sha }} .
 
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@7b7aa264d83dc58691451798b4d117d53d21edfe
+        uses: aquasecurity/trivy-action@v0.24.0
         with:
           image-ref: 'ts-template:${{ github.sha }}'
           format: 'sarif'
-          template: '@/contrib/sarif.tpl'
           output: 'trivy-results.sarif'
           severity: 'LOW,MEDIUM,CRITICAL,HIGH'
 
