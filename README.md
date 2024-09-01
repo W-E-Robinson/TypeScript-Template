@@ -10,7 +10,7 @@ This repo contains the structure for a simple TypeScript project.
 - src directory.
 - Testing set up.
 - Dockerfile.
-- Linting and testing pipeline.
+- Linting, testing and vulnerability scanning pipelines.
 
 ## Usage
 
